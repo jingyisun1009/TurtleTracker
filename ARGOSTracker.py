@@ -9,15 +9,14 @@
 
 # Create a variable pointing to the file with no header
 fileName = "data/raw/SaraNoHeader.txt"
-
 # Open the file as a read-only file object
 fileObj = open(fileName, 'r')
-
-# read data
-lineString = fileObj.readline()
-
-# while loop
-while lineString:
+# Read in all lines in the text file into a list variable
+lineList = fileObj.readlines()
+# Closes the file object (now that we have all we need)
+fileObj.close()
+# Extract the first line from the lineList
+for lineString in lineList:
     
     # Use the split command to parse the items in lineString into a list object
     lineData = lineString.split("\t")
@@ -34,9 +33,3 @@ while lineString:
     # Print information to the user
     print ("Record {0} indicates Sara was seen at {1}N and {2}W on {3}".
            format(recordID,obsLat,obsLon,obsDate))
-
-    # go to next line
-    lineString = fileObj.readline()
-    
-# close the file
-fileObj.close()
