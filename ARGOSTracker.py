@@ -44,12 +44,9 @@ for lineString in lineStrings:
         # Add values to dictionary
         dateDict[recordID] = obsDate
         locationDict[recordID] = (obsLat,obsLon)
-    
-    # Indicate script is complete
-print ("Finished")
 
 #ask user for date
-userDate = '7/3/2003'#input("Enter a date (M/D/YYYY):")
+userDate = input("Enter a date (M/D/YYYY):")
 
 # Collect keys matching user date
 keyList = []
@@ -57,3 +54,12 @@ for k,v in dateDict.items():
     if v == userDate:
         keyList.append(k)
 
+#report if no keys are found
+if len(keyList) ==0:
+        print("No records found for {}".format(userDate))
+else:
+    
+    # Show coordinates
+    for key in keyList:
+        theCoordinate = locationDict[key]
+        print("Turtle found at {}". format(theCoordinate))
